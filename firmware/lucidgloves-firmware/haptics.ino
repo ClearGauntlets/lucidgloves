@@ -28,7 +28,7 @@ void scaleLimits(int* hapticLimits, float* scaledLimits){
 #else
     scaledLimits[i] = 180.0f - hapticLimits[i] / 1000.0f * 180.0f;
 #endif
-    scaledLimits[i] *= 0.5f;
+    //scaledLimits[i] *= 0.5f; // (willard) scale values
   }
 }
 

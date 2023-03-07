@@ -23,7 +23,6 @@
 #define GRAB_GESTURE    true
 #define PINCH_GESTURE   true
 
-
 //BUTTON INVERT
 //If a button registers as pressed when not and vice versa (eg. using normally-closed switches),
 //you can invert their behaviour here by setting their line to true.
