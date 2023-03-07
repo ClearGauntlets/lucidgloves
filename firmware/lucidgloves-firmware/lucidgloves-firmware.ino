@@ -21,15 +21,13 @@
 #define USING_SPLAY false //whether or not your glove tracks splay. - tracks the side to side "wag" of fingers. Requires 5 more inputs.
 #define USING_MULTIPLEXER false //Whether or not you are using a multiplexer for inputs
 
-// TODO: Replaces FLIP_FLEXION
+// Replaces FLIP_FLEXION
 //Flip values from potentiometers (for fingers!) if they are backwards
-#define INVERT_PINKY_FLEXION   36
-#define INVERT_RING_FLEXION    39
-#define INVERT_INDEX_FLEXION   35
-#define INVERT_THUMB_FLEXION   32
+// Depending on which bit is set (0th being the Thumb and 4th being the Pinky)
+// that potentiometer will read in the opposite direction from the others
+#define FLIP_FLEXION 0b10011
 
 #define FLIP_SPLAY true //Flip values for splay
-
 
 //Gesture enables, make false to use button override
 #define TRIGGER_GESTURE true
@@ -64,12 +62,18 @@
 #define USING_FORCE_FEEDBACK true //Force feedback haptics allow you to feel the solid objects you hold
 #define SERVO_SCALING false //dynamic scaling of servo motors
 
-// TODO: Replaces FLIP_FORCE_FEEDBACK
+// Replaces FLIP_FORCE_FEEDBACK
+// Depending on which bit is set (0th being the Thumb and 4th being the Pinky)
+// that servo will fire in the opposite direction from the others
+#define  FLIP_FORCE_FEEDBACK 0b10011
+
+/*
 #define INVERT_PINKY_MOTOR     1 // Depending on how the spool per-finger unreels, 
 #define INVERT_RING_MOTOR      0 // you might need to change these values
 #define INVERT_MIDDLE_MOTOR    0 //^
 #define INVERT_INDEX_MOTOR     1 //^
 #define INVERT_THUMB_MOTOR     1 //^
+*/
 
 #if defined(ESP32)
   //(This configuration is for ESP32 DOIT V1 so make sure to change if you're on another board)
