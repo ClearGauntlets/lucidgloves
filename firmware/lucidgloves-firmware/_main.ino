@@ -44,6 +44,15 @@ void getInputs(void* parameter){
 
 int loops = 0;
 void setup() {
+  #define INTERNAL_LED 2
+  pinMode(INTERNAL_LED,OUTPUT);
+  for (int i = 0; i < 3; i++)
+  {
+    digitalWrite(INTERNAL_LED,HIGH);
+    delay(300);
+    digitalWrite(INTERNAL_LED,LOW);
+    delay(300);
+  }
 
   pinMode(32, INPUT_PULLUP);
   
@@ -70,6 +79,7 @@ void setup() {
       &Task1,  /* Task handle. */
       0); /* Core where the task should run */
   #endif
+  // TODO: Make an LED flash three times on startup.
 }
 
 

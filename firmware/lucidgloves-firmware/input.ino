@@ -258,7 +258,7 @@ void getFingerPositions(bool calibrating, bool reset){
   
   //flip pot values if needed
   for (int i = 0; i < 5; i++){
-    if (FLIP_FLEXION & (i<<1)) // Check if this finger is supposed to be flipped
+    if (FLIP_FLEXION & (1 << i)) // Check if this finger is supposed to be flipped
       rawFingers[i] = ANALOG_MAX - rawFingers[i];
   }
   

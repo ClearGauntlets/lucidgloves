@@ -10,12 +10,12 @@
 
 //This is the configuration file, main structure in _main.ino
 //CONFIGURATION SETTINGS:
-#define COMMUNICATION COMM_SERIAL //Which communication protocol to use. Options are: COMM_SERIAL (usb), COMM_BTSERIAL (bluetooth)
+#define COMMUNICATION COMM_BTSERIAL //Which communication protocol to use. Options are: COMM_SERIAL (usb), COMM_BTSERIAL (bluetooth)
 //serial over USB
   #define SERIAL_BAUD_RATE 115200
   
 //serial over Bluetooth
-  #define BTSERIAL_DEVICE_NAME "lucidgloves-left"
+  #define BTSERIAL_DEVICE_NAME "cleargauntlets-left"
 
 //ANALOG INPUT CONFIG
 #define USING_SPLAY false //whether or not your glove tracks splay. - tracks the side to side "wag" of fingers. Requires 5 more inputs.
@@ -23,9 +23,9 @@
 
 // Replaces FLIP_FLEXION
 //Flip values from potentiometers (for fingers!) if they are backwards
-// Depending on which bit is set (0th being the Thumb and 4th being the Pinky)
+// Depending on which bit is set (0th being the Pinky and 4th being the Thumb)
 // that potentiometer will read in the opposite direction from the others
-#define FLIP_FLEXION 0b10011
+#define FLIP_FLEXION 0b00110
 
 #define FLIP_SPLAY true //Flip values for splay
 
@@ -63,9 +63,9 @@
 #define SERVO_SCALING false //dynamic scaling of servo motors
 
 // Replaces FLIP_FORCE_FEEDBACK
-// Depending on which bit is set (0th being the Thumb and 4th being the Pinky)
+// Depending on which bit is set (0th being the Pinky and 4th being the Thumb)
 // that servo will fire in the opposite direction from the others
-#define  FLIP_FORCE_FEEDBACK 0b10011
+#define  FLIP_FORCE_FEEDBACK 0b11001
 
 /*
 #define INVERT_PINKY_MOTOR     1 // Depending on how the spool per-finger unreels, 
@@ -83,32 +83,36 @@
   #define PIN_MIDDLE    34
   #define PIN_INDEX     35
   #define PIN_THUMB     32
-  #define PIN_JOY_X     33
-  #define PIN_JOY_Y     25
-  #define PIN_JOY_BTN   1
-  #define PIN_A_BTN     22
-  #define PIN_B_BTN     23
+
+  #define PIN_A_BTN     23
+  #define PIN_B_BTN     22
+  #define PIN_MENU_BTN  1
+  #define PIN_JOY_X     3
+  #define PIN_JOY_Y     21
+  #define PIN_JOY_BTN   19
+
   #define PIN_TRIG_BTN  16 //unused if gesture set
   #define PIN_GRAB_BTN  4 //unused if gesture set
   #define PIN_PNCH_BTN  2 //unused if gesture set
-  #define PIN_CALIB     0 //button for recalibration (You can set this to GPIO0 to use the BOOT button, but only when using Bluetooth.)
+  #define PIN_CALIB     3 //button for recalibration (You can set this to GPIO0 to use the BOOT button, but only when using Bluetooth.)
   #define DEBUG_LED 2
-  #define PIN_PINKY_MOTOR     5  //used for force feedback
-  #define PIN_RING_MOTOR      18 //^
-  #define PIN_MIDDLE_MOTOR    19 //^
-  #define PIN_INDEX_MOTOR     21 //^
-  #define PIN_THUMB_MOTOR     17 //^
-  #define PIN_MENU_BTN        27
+
+  #define PIN_PINKY_MOTOR     17  //used for force feedback
+  #define PIN_RING_MOTOR      16 //^
+  #define PIN_MIDDLE_MOTOR    4 //^
+  #define PIN_INDEX_MOTOR     2 //^
+  #define PIN_THUMB_MOTOR     15 //^
 
   //Splay pins. Only used for splay tracking gloves. Use MUX(pin) if you are using a multiplexer for it.
-  #define PIN_PINKY_SPLAY  26
-  #define PIN_RING_SPLAY   27
-  #define PIN_MIDDLE_SPLAY 14
-  #define PIN_INDEX_SPLAY  12
-  #define PIN_THUMB_SPLAY  13
+  #define PIN_PINKY_SPLAY  33
+  #define PIN_RING_SPLAY   25
+  #define PIN_MIDDLE_SPLAY 26
+  #define PIN_INDEX_SPLAY  27
+  #define PIN_THUMB_SPLAY  14
   
 //
 //  //Select pins for multiplexers, set as needed if using a mux. You can add or remove pins as needed depending on how many select pins your mux needs.
+#define PINS_MUX_SELECT
 //  #define PINS_MUX_SELECT     27,  /*S0 pin*/ \
 //                              14,  /*S1 pin*/ \
 //                              12,  /*S2 pin*/ \
@@ -159,12 +163,13 @@
   #define PIN_THUMB_SPLAY  MUX(14)
   
   //Select pins for multiplexers, set as needed if using a mux. You can add or remove pins as needed depending on how many select pins your mux needs.
-  #define PINS_MUX_SELECT     10,  /*S0 pin*/ \
-                              11,  /*S1 pin*/ \
-                              12,  /*S2 pin*/ \
-                              13   /*S3 pin (if your mux is 3-bit like 74HC4051 then you can remove this line and the backslash before it.)*/
-  
-  #define MUX_INPUT A0  //the input or SIG pin of the multiplexer. This can't be a mux pin.
+  #define PINS_MUX_SELECT
+  //#define PINS_MUX_SELECT     10,  /*S0 pin*/ \
+  //                            11,  /*S1 pin*/ \
+  //                            12,  /*S2 pin*/ \
+  //                            13   /*S3 pin (if your mux is 3-bit like 74HC4051 then you can remove this line and the backslash before it.)*/
+  //
+  //#define MUX_INPUT A0  //the input or SIG pin of the multiplexer. This can't be a mux pin.
 
   //Signal mixing for finger values. Options are: MIXING_NONE, MIXING_SINCOS
   //For double rotary hall effect sensors use MIXING_SINCOS. For potentiometers use MIXING_NONE.
